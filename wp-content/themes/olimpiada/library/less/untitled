@@ -1,0 +1,43 @@
+
+
+/** Border Radius 4 Esquinas **/
+
+	.border-radius(@radius: 15px);
+
+/** Sombra Interior Superior **/
+
+	-webkit-box-shadow: inset 0px 20px 38px -17px rgba(0,0,0,0.30);
+	-moz-box-shadow: inset 0px 20px 38px -17px rgba(0,0,0,0.30);
+	box-shadow: inset 0px 20px 38px -17px rgba(0,0,0,0.30);
+
+	/** Sombra Interior 3 lados **/
+
+	--webkit-box-shadow: inset 0px 17px 135px -40px rgba(0,0,0,.50);
+	-moz-box-shadow: inset 0px 17px 135px -40px rgba(0,0,0,.50);
+	box-shadow: inset 0px 17px 135px -40px rgba(0,0,0,.50);
+
+	/** Sombra Exterior **/
+
+/** titulos **/
+
+	100% font
+
+
+<div class="contacto-widget">
+
+
+<div class="segmento2">
+      <div class="escuela-texto">Nombre Escuela</div>
+     <div class="escuela-campo">[text* your-name class:escuela-contacto-widget] </div>
+</div>
+
+<div class="segmento3>
+     <div class="correo-texto">Correo Electrónico</div>
+     <div class="correo-campo">[email* your-email class:email-contacto-widget]</div>
+</div>
+
+<div clas="segmento4>
+     <div class="estado-texto">Estado</div>
+    <div class="estado-campo">[select menu-75 class:estado-campo include_blank "Aguascalientes" "Baja California" "Baja California Sur" "Campeche" "Chiapas" "Chihuahua" "Coahuila" "Colima" "Distrito Federal" "Durango" "Estado de México" "Guanajuato" "Guerrero" "Hidalgo" "Jalisco" "Michoacán" "Morelos" "Nayarit" "Nuevo León" "Oaxaca" "Puebla" "Querétaro" "Quintana Roo" "San Luis Potosí" "Sinaloa" "Sonora" "Tabasco" "Tamaulipas" "Tlaxcala" "Veracruz" "Yucatán" "Zacatecas"]</div>
+
+</div>

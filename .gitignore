@@ -1,0 +1,8 @@
+wp-config.php
+.htaccess
+concurso/app/Config/database.php
+concurso/app/Config/core.php
+concurso/.htaccess
+concurso/app/.htaccess
+concurso/app/webroot/.htaccess
+nbproject/

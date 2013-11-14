@@ -1,0 +1,2361 @@
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: IE Stylesheet
+
+So instead of using the respond.js file to add media query support
+to IE, we're going to use SASS to create an easily readable css file.
+Here, we import all the styles the standard stylesheet gets, only
+without the media queries. No need to worry about editing anything!
+
+******************************************************************/
+/*
+Remember, all the BASE styles are called already since IE can
+read those. Below, we need to import only the stuff IE can't 
+understand (what's inside the media queries). We also need to
+import the mixins file so LESS can understand the variables.
+*/
+/* import mixins */
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: Mixins & Constants Stylesheet
+
+This is where you can take advantage of LESS' great features: 
+Mixins & Constants. I won't go in-depth on how they work exactly,
+there are a few articles below that will help do that. What I will
+tell you is that this will help speed up simple changes like
+changing a color or adding CSS3 techniques like box shadow and
+border-radius.
+
+A WORD OF WARNING: It's very easy to overdo it here. Be careful and
+remember less is more. 
+
+******************************************************************/
+/*********************
+CLEARFIXIN'
+*********************/
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+/*********************
+TOOLS
+*********************/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.image-replacement {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/*********************
+COLORS
+Need help w/ choosing your colors? Try this site out:
+http://0to255.com/
+*********************/
+/*
+Here's a great tutorial on how to
+use color variables properly:
+http://sachagreif.com/sass-color-variables/
+*/
+/*********************
+TYPOGRAPHY
+*********************/
+/* 	To embed your own fonts, use this syntax
+	and place your fonts inside the 
+	library/fonts folder. For more information
+	on embedding fonts, go to:
+	http://www.fontsquirrel.com/
+	Be sure to remove the comment brackets.
+*/
+@font-face {
+  font-family: "Tw Cen MT Bold";
+  src: url('../fonts/tw-cen-mt-bold.eot');
+  src: url('../fonts/tw-cen-mt-bold.eot?#iefix') format('embedded-opentype'), url('../fonts/tw-cen-mt-bold.svg#Tw Cen MT') format('svg'), url('../fonts/tw-cen-mt-bold.woff') format('woff'), url('../fonts/tw-cen-mt-bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Tw Cen MT Normal";
+  src: url('../fonts/tw-cen-mt.eot');
+  src: url('../fonts/tw-cen-mt.eot?#iefix') format('embedded-opentype'), url('../fonts/tw-cen-mt.svg#Tw Cen MT') format('svg'), url('../fonts/tw-cen-mt.woff') format('woff'), url('../fonts/tw-cen-mt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/*	@font-face {
+    	font-family: 'Font Name';
+    	src: url('../fonts/font-name.eot');
+    	src: url('../fonts/font-name.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/font-name.woff') format('woff'),
+             url('../fonts/font-name.ttf') format('truetype'),
+             url('../fonts/font-name.svg#font-name') format('svg');
+    	font-weight: normal;
+    	font-style: normal;
+	}
+*/
+/* 
+use the best ampersand 
+http://simplebits.com/notebook/2008/08/14/ampersands-2/
+*/
+span.amp {
+  font-family: Baskerville, 'Goudy Old Style', Palatino, 'Book Antiqua', serif;
+  font-style: italic;
+}
+/* text alignment */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.alert {
+  margin: 10px;
+  padding: 5px 18px;
+  border: 1px solid;
+}
+.alert-help {
+  margin: 10px;
+  padding: 5px 18px;
+  border: 1px solid;
+  border-color: #e8dc59;
+  background: #ebe16f;
+}
+.alert-info {
+  margin: 10px;
+  padding: 5px 18px;
+  border: 1px solid;
+  border-color: #bfe4f4;
+  background: #d5edf8;
+}
+.alert-error {
+  margin: 10px;
+  padding: 5px 18px;
+  border: 1px solid;
+  border-color: #f8cdce;
+  background: #fbe3e4;
+}
+.alert-success {
+  margin: 10px;
+  padding: 5px 18px;
+  border: 1px solid;
+  border-color: #deeaae;
+  background: #e6efc2;
+}
+/*********************
+BORDER RADIUS
+*********************/
+/* 
+NOTE: For older browser support (and some mobile), 
+don't use the shorthand to define *different* corners. 
+
+USAGE: .border-radius(4px); 
+
+*/
+/*********************
+TRANISTION
+*********************/
+/* .transition(all,2s); */
+/*********************
+CSS3 GRADIENTS
+Be careful with these since they can 
+really slow down your CSS. Don't overdo it.
+*********************/
+/* .css-gradient(#dfdfdf,#f8f8f8); */
+/*********************
+BOX SHADOW
+*********************/
+/* .boxShadow(0,0,4px,0,#444); */
+/* .boxShadow(none); */
+/*********************
+BUTTONS
+*********************/
+.button,
+.button:visited {
+  border: 1px solid #be0d37;
+  border-top-color: #db0f3f;
+  border-left-color: #db0f3f;
+  padding: 4px 12px;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  margin-bottom: 20px;
+  line-height: 21px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #e40f42;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f01d4f), to(#e40f42));
+  background-image: -webkit-linear-gradient(top, #f01d4f, #e40f42);
+  background-image: -moz-linear-gradient(top, #f01d4f, #e40f42);
+  background-image: -o-linear-gradient(top, #f01d4f, #e40f42);
+  background-image: linear-gradient(to bottom, #f01d4f, #e40f42);
+}
+.button:hover,
+.button:visited:hover,
+.button:focus,
+.button:visited:focus {
+  color: #ffffff;
+  border: 1px solid #be0d37;
+  border-top-color: #9d0a2d;
+  border-left-color: #9d0a2d;
+  background-color: #cc0e3b;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e40f42), to(#cc0e3b));
+  background-image: -webkit-linear-gradient(top, #e40f42, #cc0e3b);
+  background-image: -moz-linear-gradient(top, #e40f42, #cc0e3b);
+  background-image: -o-linear-gradient(top, #e40f42, #cc0e3b);
+  background-image: linear-gradient(to bottom, #e40f42, #cc0e3b);
+}
+.button:active,
+.button:visited:active {
+  background-color: #f01d4f;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e40f42), to(#f01d4f));
+  background-image: -webkit-linear-gradient(top, #e40f42, #f01d4f);
+  background-image: -moz-linear-gradient(top, #e40f42, #f01d4f);
+  background-image: -o-linear-gradient(top, #e40f42, #f01d4f);
+  background-image: linear-gradient(to bottom, #e40f42, #f01d4f);
+}
+.blue-button,
+.blue-button:visited {
+  border-color: #1472ad;
+  text-shadow: 0 1px 1px #1472ad;
+  background-color: #1681c4;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1990db), to(#1681c4));
+  background-image: -webkit-linear-gradient(top, #1990db, #1681c4);
+  background-image: -moz-linear-gradient(top, #1990db, #1681c4);
+  background-image: -o-linear-gradient(top, #1990db, #1681c4);
+  background-image: linear-gradient(to bottom, #1990db, #1681c4);
+  -webkit-box-shadow: inset 0 0 3px #59b3ec;
+  -moz-box-shadow: inset 0 0 3px #59b3ec;
+  box-shadow: inset 0 0 3px #59b3ec;
+}
+.blue-button:hover,
+.blue-button:visited:hover,
+.blue-button:focus,
+.blue-button:visited:focus {
+  border-color: #116396;
+  background-color: #1472ad;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1784c9), to(#1472ad));
+  background-image: -webkit-linear-gradient(top, #1784c9, #1472ad);
+  background-image: -moz-linear-gradient(top, #1784c9, #1472ad);
+  background-image: -o-linear-gradient(top, #1784c9, #1472ad);
+  background-image: linear-gradient(to bottom, #1784c9, #1472ad);
+}
+.blue-button:active,
+.blue-button:visited:active {
+  background-color: #1990db;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1681c4), to(#1990db));
+  background-image: -webkit-linear-gradient(top, #1681c4, #1990db);
+  background-image: -moz-linear-gradient(top, #1681c4, #1990db);
+  background-image: -o-linear-gradient(top, #1681c4, #1990db);
+  background-image: linear-gradient(to bottom, #1681c4, #1990db);
+}
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: 481px and Up Stylesheet
+
+This stylesheet is loaded for larger devices. It's set to 
+481px because at 480px it would load on a landscaped iPhone.
+This isn't ideal because then you would be loading all those
+extra styles on that same mobile connection. 
+
+A word of warning. This size COULD be a larger mobile device,
+so you still want to keep it pretty light and simply expand
+upon your base.less styles.
+
+******************************************************************/
+/*********************
+NAVIGATION STYLES
+*********************/
+/* .menu is clearfixed inside mixins.scss */
+.menu {
+  /* end .menu ul */
+
+}
+.menu ul {
+  /* end .menu ul li */
+
+  /* highlight current page */
+
+  /* end current highlighters */
+
+}
+.menu ul li {
+  /*
+				plan your menus and drop-downs wisely.
+				*/
+
+}
+.menu ul li a {
+  /*
+					you can use hover styles here even though this size
+					has the possibility of being a mobile device.
+					*/
+
+}
+/* end .menu */
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+/* entry content */
+.entry-content {
+  /* at this larger size, we can start to align images */
+
+}
+.entry-content .alignleft,
+.entry-content img.alignleft {
+  margin-right: 1.5em;
+  display: inline;
+  float: left;
+}
+.entry-content .alignright,
+.entry-content img.alignright {
+  margin-left: 1.5em;
+  display: inline;
+  float: right;
+}
+.entry-content .aligncenter,
+.entry-content img.aligncenter {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  clear: both;
+}
+/* end .entry-content */
+/*********************
+FOOTER STYLES
+*********************/
+/*
+check your menus here. do they look good?
+do they need tweaking?
+*/
+/* end .footer-links */
+/** Header
+**********************************/
+.slider-header {
+  height: 350px;
+}
+.logo-slider {
+  left: 20%;
+  right: 20%;
+}
+.logo-slider img {
+  width: 300px;
+}
+.registrate-slider {
+  top: 220px;
+}
+.registrate-slider img {
+  width: 65%;
+}
+.sesion-slider {
+  top: 225px;
+  right: 5%;
+}
+.sesion-slider img {
+  width: 100%;
+}
+/* import grid */
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Grid Stylesheet
+
+I've seperated the grid so you can swap it out easily. It's
+called at the top the style.less stylesheet.
+
+There are a ton of grid solutions out there. You should definitely
+experiment with your own. Here are some recommendations:
+
+http://gridsetapp.com - Love this site. Responsive Grids made easy.
+http://gridpak.com/ - Create your own responsive grid.
+
+The grid below is a combination of the 1140 grid and Twitter Boostrap. 
+I liked 1140 but Boostrap's grid was way more detailed so I merged them 
+together, let's see how this works out. If you want to use 1140, the original 
+values are commented out on each line.
+
+******************************************************************/
+.onecol {
+  width: 5.801104972%;
+}
+/* 4.85%;  } /* grid_1  */
+.twocol {
+  width: 14.364640883%;
+}
+/* 13.45%; } /* grid_2  */
+.threecol {
+  width: 22.928176794%;
+}
+/* 22.05%; } /* grid_3  */
+.fourcol {
+  width: 31.491712705%;
+}
+/* 30.75%; } /* grid_4  */
+.fivecol {
+  width: 40.055248616%;
+}
+/* 39.45%; } /* grid_5  */
+.sixcol {
+  width: 48.618784527%;
+}
+/* 48%;    } /* grid_6  */
+.sevencol {
+  width: 57.182320438000005%;
+}
+/* 56.75%; } /* grid_7  */
+.eightcol {
+  width: 65.74585634900001%;
+}
+/* 65.4%;  } /* grid_8  */
+.ninecol {
+  width: 74.30939226%;
+}
+/* 74.05%; } /* grid_9  */
+.tencol {
+  width: 82.87292817100001%;
+}
+/* 82.7%;  } /* grid_10 */
+.elevencol {
+  width: 91.436464082%;
+}
+/* 91.35%; } /* grid_11 */
+.twelvecol {
+  width: 99.999999993%;
+}
+/* 100%;   } /* grid_12 */
+.fullcol {
+  width: 100%;
+}
+.actgrid {
+  width: 47%;
+}
+.sugeridas {
+  width: 44%;
+}
+.trescol {
+  width: 33.33%;
+}
+.seiscol {
+  width: 50%;
+}
+.unodedos {
+  width: 25%;
+}
+.dosdedos {
+  width: 75%;
+}
+.unodedos-a {
+  width: 40%;
+}
+.dosdedos-a {
+  width: 60%;
+}
+.cincocol {
+  width: 20%;
+}
+.onecol,
+.twocol,
+.threecol,
+.fourcol,
+.fivecol,
+.sixcol,
+.sevencol,
+.eightcol,
+.ninecol,
+.tencol,
+.elevencol,
+.twelvecol,
+.cincocol {
+  position: relative;
+  float: left;
+  margin-left: 2.762430939%;
+}
+.first {
+  margin-left: 0;
+}
+.last {
+  float: right;
+}
+.actgrid,
+.sugeridas,
+.trescol,
+.seiscol,
+.unodedos,
+.dosdedos,
+.unodedos-a,
+.dosdedos-a {
+  position: relative;
+  float: left;
+}
+.actgrid {
+  margin-left: 2%;
+}
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+/*********************
+GENERAL STYLES
+*********************/
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+.wrap {
+  max-width: 1140px;
+}
+/*********************
+HEADER STYLES
+*********************/
+/*********************
+NAVIGATION STYLES
+*********************/
+.nav {
+  /*background: @lectura-azul;*/
+
+  border: 0;
+  height: 70px;
+  margin-top: 12px;
+  /* end .menu ul li */
+
+  /* highlight current page */
+
+  /* end current highlighters */
+
+}
+.nav li {
+  float: left;
+  position: relative;
+  /*
+		plan your menus and drop-downs wisely.
+		*/
+
+  /* showing sub-menus */
+
+}
+.nav li a {
+  border-bottom: 0;
+  /*
+			you can use hover styles here even though this size
+			has the possibility of being a mobile device.
+			*/
+
+}
+.nav li a:hover,
+.nav li a:focus {
+  background-color: ;
+}
+.nav li:nth-child(1) {
+  width: 19%;
+  padding-top: 0;
+  margin-top: -20px;
+}
+.nav li:nth-child(2) {
+  width: 20%;
+}
+.nav li:nth-child(3) {
+  width: 15%;
+}
+.nav li:nth-child(4) {
+  width: 20%;
+}
+.nav li:nth-child(5) {
+  width: 20%;
+}
+.nav li ul.sub-menu,
+.nav li ul.children {
+  /*border: 2px solid #FFF;*/
+
+  border-top: 0;
+  position: absolute;
+  display: none;
+  z-index: 8999;
+  width: 100%;
+  margin-top: 33px;
+  /* highlight sub-menu current page */
+
+}
+.nav li ul.sub-menu li,
+.nav li ul.children li {
+  width: 100%;
+  /*
+				if you need to go deeper, go nuts
+				just remember deeper menus suck
+				for usability. k, bai.
+				*/
+
+}
+.nav li ul.sub-menu li a,
+.nav li ul.children li a {
+  padding-left: 10px;
+  border-right: 0;
+  display: block;
+  width: 100%;
+  border: solid 2px #ffffff;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  -moz-box-shadow: 0 5px 30px -8px #000000;
+  -webkit-box-shadow: 0 5px 30px -8px #000000;
+  box-shadow: 0 5px 30px -8px #000000;
+}
+.nav li ul.sub-menu li:nth-child(1),
+.nav li ul.children li:nth-child(1) {
+  z-index: 999999;
+}
+.nav li ul.sub-menu li:nth-child(2),
+.nav li ul.children li:nth-child(2) {
+  margin-top: -22px;
+  padding-top: 15px;
+  z-index: 999998;
+}
+.nav li ul.sub-menu li:nth-child(2) a,
+.nav li ul.children li:nth-child(2) a {
+  padding-top: 17px;
+}
+.nav li ul.sub-menu li:nth-child(3),
+.nav li ul.children li:nth-child(3) {
+  margin-top: -22px;
+  padding-top: 15px;
+  z-index: 999997;
+}
+.nav li ul.sub-menu li:nth-child(3) a,
+.nav li ul.children li:nth-child(3) a {
+  padding-top: 17px;
+}
+.nav li ul.sub-menu li:nth-child(4),
+.nav li ul.children li:nth-child(4) {
+  margin-top: -22px;
+  padding-top: 15px;
+  z-index: 999996;
+}
+.nav li ul.sub-menu li:nth-child(4) a,
+.nav li ul.children li:nth-child(4) a {
+  padding-top: 17px;
+}
+.nav li ul.sub-menu li:nth-child(5),
+.nav li ul.children li:nth-child(5) {
+  margin-top: -22px;
+  padding-top: 15px;
+  z-index: 999995;
+}
+.nav li ul.sub-menu li:nth-child(5) a,
+.nav li ul.children li:nth-child(5) a {
+  padding-top: 17px;
+}
+.nav li ul.sub-menu li:nth-child(6),
+.nav li ul.children li:nth-child(6) {
+  margin-top: -22px;
+  padding-top: 15px;
+  z-index: 999994;
+}
+.nav li ul.sub-menu li:nth-child(6) a,
+.nav li ul.children li:nth-child(6) a {
+  padding-top: 17px;
+}
+.nav li ul.sub-menu li:nth-child(7),
+.nav li ul.children li:nth-child(7) {
+  margin-top: -22px;
+  padding-top: 15px;
+  z-index: 999993;
+}
+.nav li ul.sub-menu li:nth-child(7) a,
+.nav li ul.children li:nth-child(7) a {
+  padding-top: 17px;
+}
+.nav li ul.sub-menu li:nth-child(8),
+.nav li ul.children li:nth-child(8) {
+  margin-top: -22px;
+  padding-top: 15px;
+  z-index: 999992;
+}
+.nav li ul.sub-menu li:nth-child(8) a,
+.nav li ul.children li:nth-child(8) a {
+  padding-top: 17px;
+}
+.nav li ul.sub-menu li:nth-child(9),
+.nav li ul.children li:nth-child(9) {
+  margin-top: -22px;
+  padding-top: 15px;
+  z-index: 999991;
+}
+.nav li ul.sub-menu li:nth-child(9) a,
+.nav li ul.children li:nth-child(9) a {
+  padding-top: 17px;
+}
+.nav li ul.sub-menu li:nth-child(10),
+.nav li ul.children li:nth-child(10) {
+  margin-top: -22px;
+  padding-top: 15px;
+  z-index: 999990;
+}
+.nav li ul.sub-menu li:nth-child(10) a,
+.nav li ul.children li:nth-child(10) a {
+  padding-top: 17px;
+}
+.nav li ul.sub-menu li:last-child a,
+.nav li ul.children li:last-child a {
+  /*	-webkit-border-radius: 0px 0px 15px 15px;
+						-moz-border-radius:  0px 0px 15px 15px;
+						border-radius:  0px 0px 12px 12px;
+						border-bottom: 0;*/
+
+}
+.nav li ul.sub-menu li.current-menu-item a,
+.nav li ul.children li.current-menu-item a,
+.nav li ul.sub-menu li.current_page_item a,
+.nav li ul.children li.current_page_item a,
+.nav li ul.sub-menu li.current-page-ancestor a,
+.nav li ul.children li.current-page-ancestor a {
+  color: #f5d743;
+}
+.nav li:hover ul {
+  top: auto;
+  display: block;
+}
+.nav li.current-menu-item a,
+.nav li.current_page_item a,
+.nav li.current-page-ancestor a {
+  color: #f5d743;
+}
+/* end .nav */
+#menu-menu-principal-1 .menu-item-17 {
+  margin-top: -20px;
+}
+.sub-menu .menu-item-20 a {
+  background: #009cb1;
+  color: #dfe5d7;
+  margin-top: -16px;
+}
+.sub-menu .menu-item-41 a {
+  background: #43bdcb;
+  color: #c3e0e6;
+}
+.sub-menu .menu-item-49 a {
+  background: #92d6df;
+  color: #59b3c6;
+}
+.sub-menu .menu-item-59 a {
+  background: #bce4e9;
+  color: #299cb3;
+}
+.sub-menu .menu-item-70 a {
+  background: #e35355;
+  color: #dfe5d7;
+}
+.sub-menu .menu-item-76 a {
+  background: #ff8284;
+  color: #e5c7c6;
+}
+.sub-menu .menu-item-75 a {
+  background: #ffa5a7;
+  color: #c95653;
+}
+.sub-menu .menu-item-110 a {
+  background: #d8762d;
+  color: #eee8d9;
+}
+/*********************
+SIDEBARS & ASIDES
+*********************/
+.sidebar {
+  margin-top: 4.4em;
+}
+.widgettitle {
+  /*border-bottom: 2px solid #444;*/
+
+  margin-bottom: 0.75em;
+}
+.widget {
+  /*padding: 0 10px;*/
+
+}
+.widget ul li {
+  margin-bottom: 0.75em;
+  /* deep nesting */
+
+}
+.widget ul li ul {
+  margin-top: 0.75em;
+  padding-left: 1em;
+}
+/* links widget */
+/* meta widget */
+/* pages widget */
+/* recent-posts widget */
+/* archives widget */
+/* tag-cloud widget */
+/* calendar widget */
+/* category widget */
+/* recent-comments widget */
+/* search widget */
+/* text widget */
+/*********************
+FOOTER STYLES
+*********************/
+/*
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+*/
+.footer-links ul li {
+  /*
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/
+
+}
+/* end .footer-links */
+/** Header
+**********************************/
+.cabecera-logos {
+  display: block;
+}
+.slider-header {
+  height: 420px;
+}
+.logo-slider {
+  top: 50px;
+  left: 3%;
+}
+.logo-slider img {
+  width: 100%;
+}
+.registrate-slider {
+  top: 77px;
+  right: 0;
+}
+.registrate-slider img {
+  width: 90%;
+}
+.sesion-slider {
+  top: 290px;
+  right: 1%;
+}
+/** Pajarito **/
+.pajarito-home {
+  display: block;
+  position: absolute;
+  max-width: 163px;
+  max-height: 118px;
+  top: 250px;
+  left: 0;
+}
+.pajarito-home img {
+  width: 80%;
+  height: auto;
+}
+.pajarito-circular {
+  display: block;
+  position: absolute;
+  max-width: 163px;
+  max-height: 118px;
+  top: 300px;
+  left: 0;
+  margin-left: 5%;
+}
+.pajarito-circular img {
+  width: 80%;
+  height: auto;
+}
+.pajarito-ganadores {
+  display: block;
+  position: absolute;
+  max-width: 163px;
+  max-height: 118px;
+  top: 300px;
+  left: 0;
+  margin-left: 24%;
+}
+.pajarito-ganadores img {
+  width: 80%;
+  height: auto;
+}
+.pajarito-post {
+  display: block;
+  position: absolute;
+  max-width: 163px;
+  max-height: 118px;
+  top: 300px;
+  left: 0;
+  margin-left: 41%;
+}
+.pajarito-post img {
+  width: 80%;
+  height: auto;
+}
+.pajarito-dudas {
+  display: block;
+  position: absolute;
+  max-width: 163px;
+  max-height: 118px;
+  top: 300px;
+  left: 0;
+  margin-left: 59%;
+}
+.pajarito-dudas img {
+  width: 80%;
+  height: auto;
+}
+.pajarito-contacto {
+  display: block;
+  position: absolute;
+  max-width: 163px;
+  max-height: 118px;
+  top: 300px;
+  left: 0;
+  margin-left: 78%;
+}
+.pajarito-contacto img {
+  width: 80%;
+  height: auto;
+}
+.pajarito-registro {
+  display: block;
+  position: absolute;
+  max-width: 163px;
+  max-height: 118px;
+  top: 30px;
+  left: 0;
+  margin-left: 78%;
+}
+.pajarito-registro img {
+  width: 80%;
+  height: auto;
+}
+/** Home
+**********************************/
+/** Secion Video **/
+.video-home {
+  width: 100%;
+  height: auto;
+  margin-left: 0;
+  margin-top: 4.4em;
+  background-color: #ba2020;
+  padding: 25px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+}
+.video-home iframe {
+  height: 400px;
+}
+/** Titulo del Proyecto **/.titulo-proyecto {
+  width: 100%;
+  margin-left: 0;
+  color: #fff;
+  margin-top: 2.5em;
+  text-align: center;
+  font-size: 100%;
+  background-color: #d8762d;
+  -webkit-border-radius: 15px 15px 0 0;
+  -moz-border-radius: 15px 15px 0 0;
+  border-radius: 15px 15px 0 0;
+}
+.titulo-proyecto h1 {
+  margin: 0;
+}
+/** Descripción del Proyecto **/
+.contenido-proyecto {
+  width: 100%;
+  margin-left: 0;
+  background: url(../images/fondo-textura.png) repeat;
+  color: #726958;
+  margin-top: 0.525em;
+  padding-top: 0.313em;
+  padding-bottom: 0.313em;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+  font-size: 1.5em;
+  text-align: left;
+  -webkit-border-radius: 0px 0px 15px 15px;
+  -moz-border-radius: 0px 0px 15px 15px;
+  border-radius: 0px 0px 15px 15px;
+  --webkit-box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+}
+.contenido-proyecto p {
+  line-height: 2em;
+}
+/** Circular con Palabras
+**********************************/
+/** Un Proyecto
+	*****************************/
+/** Contenedor Una Imagen **/
+.contenedor-una-imagen {
+  background: #da6f5f;
+  width: 100%;
+  -webkit-border-radius: 0 0 15px 15px;
+  -moz-border-radius: 0 0 15px 15px;
+  border-radius: 0 0 15px 15px;
+  -webkit-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.705);
+  -moz-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0 10px 40px -8px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 10px 40px -8px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 10px 40px -8px rgba(0, 0, 0, 0.7);
+}
+.una-imagen {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  width: 95%;
+  padding: 20px;
+  height: auto;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  background: #ffffff;
+  -webkit-box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+}
+.una-imagen img {
+  width: 100%;
+  height: auto;
+  margin-bottom: -7px;
+}
+/** Contenedor Cuatro Imagenes **/
+.contenedor-cuatro-imagenes {
+  background: #da6f5f;
+}
+.cuatro-imagenes-a img,
+.cuatro-imagenes-b img,
+.cuatro-imagenes-c img,
+.cuatro-imagenes-d img {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  width: 80%;
+  height: auto;
+  border: solid 10px #ffffff;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+.contenido-un-proyecto {
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/** Tabla Actividades **/
+.contenedor-actividades {
+  width: 70%;
+  height: auto;
+  margin-bottom: 20px;
+}
+.titulo-actividades {
+  background: #da6f5f;
+  color: #ffffff;
+  font-size: 1.8em;
+  text-align: center;
+  padding-left: 0;
+  position: relative;
+  -webkit-border-radius: 15px 15px 0px 0px;
+  -moz-border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
+}
+.boton-descarga {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -45px;
+  margin-right: -100px;
+}
+.boton-descarga img {
+  width: 90%;
+  height: auto;
+}
+.actividades-interior {
+  color: #ffffff;
+  min-height: 385px;
+  background: #d8762d;
+  padding: 15px;
+  margin-top: 10px;
+  -webkit-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 0px 0px 15px 15px;
+  -moz-border-radius: 0px 0px 15px 15px;
+  border-radius: 0px 0px 15px 15px;
+}
+.actividad {
+  background: #ba2020;
+  margin-top: 15px;
+  height: 34px;
+}
+.actividad img {
+  margin-top: -4px;
+  margin-left: -15px;
+}
+.texto-actividad {
+  margin-top: -38px;
+  margin-left: 30px;
+}
+.descripcion {
+  background: #ba2020;
+  padding: 5px;
+  margin-top: 15px;
+  width: 47%;
+  margin-left: 2%;
+}
+/** Para los Profesores
+	*****************************/
+.imagen-top {
+  left: 40%;
+  right: 40%;
+}
+.imagen-top img {
+  width: 324px;
+  height: 300px;
+}
+.imagen-footer {
+  bottom: 0;
+}
+.imagen-footer img {
+  width: 180px;
+  height: 226px;
+  margin-bottom: -38px;
+}
+.contenedor-actividades-sugeridas {
+  width: 80%;
+  height: auto;
+  margin-top: -50px;
+}
+.titulo-actividades-sugeridas {
+  background: #ba2020;
+  color: #ffffff;
+  font-size: 2.250em;
+  padding: 10px;
+  text-align: center;
+  -webkit-border-radius: 30px 30px 0 0;
+  -moz-border-radius: 30px 30px 0 0;
+  border-radius: 30px 30px 0 0;
+}
+.actividades-sugeridas {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.actividades-sugeridas {
+  background: #d8762d;
+  padding: 10px;
+  margin-top: 10px;
+  -webkit-border-radius: 0 0 30px 30px;
+  -moz-border-radius: 0 0 30px 30px;
+  border-radius: 0 0 30px 30px;
+}
+.contenedor-actividades-sugeridas-izquierdo,
+.contenedor-actividades-sugeridas-derecho {
+  background: #ba2020;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 4%;
+  padding: 20px;
+  -webkit-border-radius: 0 0 30px 30px;
+  -moz-border-radius: 0 0 30px 30px;
+  border-radius: 0 0 30px 30px;
+  -webkit-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+}
+.contenedor-actividades-sugeridas-izquierdo img,
+.contenedor-actividades-sugeridas-derecho img {
+  width: 80%;
+  height: auto;
+  margin-top: 15px;
+}
+/** Actividades Individuales **/
+.contenedor-actividad-individual {
+  width: 65%;
+}
+.titulo-actividad-individual {
+  color: #fff;
+  margin-top: 1.2em;
+  text-align: center;
+  font-size: 2.250em;
+  background-color: #ba2020;
+  -webkit-border-radius: 25px 25px 0 0;
+  -moz-border-radius: 25px 25px 0 0;
+  border-radius: 25px 25px 0 0;
+  padding: 10px;
+}
+.titulo-actividad-individual p {
+  margin: 0;
+}
+.interior-actividad-individual {
+  position: relative;
+  background-color: #da6f5f;
+  color: #ffffff;
+  margin-bottom: 0.625em;
+  font-size: 1em;
+  padding: 25px;
+  -webkit-border-radius: 0 0 25px 25px;
+  -moz-border-radius: 0 0 25px 25px;
+  border-radius: 0 0 25px 25px;
+}
+.interior-actividad-individual p {
+  line-height: 2em;
+}
+.imagen-actividad {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+.imagen-actividad img {
+  width: 100%;
+  height: auto;
+}
+.imagen-descarga {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: -50px;
+  margin-bottom: -50px;
+}
+.contenido-actividad-indivudal {
+  background: url(../images/fondo-azul.png) repeat;
+  border: solid 2px #ffffff;
+  padding: 15px 25px 15px 25px;
+  -webkit-border-radius: 0 0 25px 25px;
+  -moz-border-radius: 0 0 25px 25px;
+  border-radius: 0 0 25px 25px;
+}
+/** Para los Niños
+	*****************************/.contenedor-ninos {
+  background: #ba2020;
+  width: 50%;
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 35px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.boton-descarga-ninos {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -25px;
+  margin-right: -60px;
+}
+.boton-descarga-ninos img {
+  width: 100%;
+  height: auto;
+}
+.contenedor-imagen-ninos {
+  background: #fff;
+  width: 94%;
+  padding: 20px;
+  height: auto;
+  margin-top: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+}
+.contenedor-imagen-ninos img {
+  width: 95%;
+  height: auto;
+}
+.titulo-ninos {
+  font-size: 25px;
+  width: 90%;
+  text-align: left;
+  color: #ffffff;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+/** Como Participo
+	*****************************/
+.encabezado-contenido-general {
+  width: 100%;
+  background: #ba2020;
+  margin-top: 0;
+}
+.titulo-contenido-general h1 {
+  font-size: 25px;
+  font-family: "Tw Cen MT", Futura, "URW Gothic L", Arial, sans-serif;
+  color: #ffffff;
+  text-align: center;
+}
+.contenedor-contenido-general {
+  width: 85%;
+  padding: 10px;
+  background: url(../images/textura-contenido-general.png) repeat;
+  color: #726958;
+  padding-top: 0.313em;
+  padding-bottom: 0.313em;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+  font-size: 1,5em;
+  -moz-box-shadow: inset -1px 7px 29px -2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset -1px 7px 29px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: inset -1px 7px 29px -2px rgba(0, 0, 0, 0.5);
+}
+.contenedor-contenido-general p {
+  line-height: 2em;
+}
+/** Ganadores
+**********************************/
+.contenido-ganadores {
+  width: 100%;
+  margin-left: 0;
+  background: #dc8745;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  -webkit-border-radius: 0 0 25px 25px;
+  -moz-border-radius: 0 0 25px 25px;
+  border-radius: 0 0 25px 25px;
+  -moz-box-shadow: inset 0 5px 21px -7px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: inset 0 5px 21px -7px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 5px 21px -7px rgba(0, 0, 0, 0.6);
+}
+.contenido-ganadores {
+  font-size: 11px;
+  background: #dc8745;
+  padding: 10px;
+  color: #fff;
+}
+.contenedor-tabla {
+  padding: 15px;
+  color: #fff;
+}
+/** Cabecera Tabla **/
+.cabecera-ganadores {
+  width: 100%;
+  margin-left: 0;
+  min-height: 100px;
+  background: #ba2020;
+  color: #ffffff;
+  margin-top: 6.625em;
+  padding-top: 0.313em;
+  padding-bottom: 0.313em;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+  font-size: 1,5em;
+  position: relative;
+  -webkit-border-radius: 25px 25px 0 0;
+  -moz-border-radius: 25px 25px 0 0;
+  border-radius: 25px 25px 0 0;
+}
+.cabecera-ganadores p {
+  line-height: 2em;
+}
+.logo-cabecera-ganadores {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -70px;
+  margin-left: -7px;
+}
+.titulo-cabecera-ganadores {
+  float: left;
+  width: 50%;
+  text-align: center;
+  padding-top: 35px;
+  padding-bottom: 28px;
+  font-size: 20px;
+}
+.trofeo-cabecera-ganadores {
+  float: left;
+  width: 20%;
+  margin-top: -55px;
+  margin-left: -33px;
+}
+.trofeo-cabecera-ganadores img {
+  width: 184px;
+  height: 213px;
+}
+.slogan-cabecera-ganadores {
+  float: left;
+  width: 30%;
+  text-align: right;
+  padding-top: 35px;
+  padding-bottom: 28px;
+  font-size: 20px;
+}
+/** Tabla **/.dataTables_scrollHead {
+  margin-top: -40px;
+}
+.dataTables_wrapper {
+  font-size: 10px;
+  margin-bottom: 0;
+}
+.tablepress .even td,
+.tablepress .odd td {
+  background: #b93930;
+}
+.tablepress tbody tr td {
+  border-top: 0;
+  border-left: solid 8px #dc8745;
+  border-right: solid 8px #dc8745;
+  padding: 20px 0 20px 0;
+}
+.tablepress thead th {
+  background: transparent;
+  /*	border-left: solid 8px #dc8745;
+					border-right: solid 8px #dc8745;*/
+
+  border-bottom: 0;
+  margin-bottom: 5px;
+}
+.dataTables_scrollHead {
+  margin-bottom: 10px;
+}
+.tablepress .column-1 {
+  background: #d26d68;
+  margin-right: 5%;
+  width: 15%;
+}
+.tablepress .column-2 {
+  background: #d26d68;
+  margin-right: 5%;
+  width: 15%;
+}
+.tablepress .column-3 {
+  background: #d26d68;
+  margin-right: 5%;
+  width: 20%;
+}
+.tablepress .column-4 {
+  background: #d26d68;
+  margin-right: 5%;
+  width: 20%;
+}
+.tablepress .column-5 {
+  background: #d26d68;
+  margin-right: 5%;
+  width: 10%;
+}
+.tablepress .column-6 {
+  background: #d26d68;
+  margin-right: 5%;
+  width: 5%;
+}
+.tablepress .column-7 {
+  background: #d26d68;
+  margin-right: 5%;
+  width: 10%;
+}
+.tablepress .column-8 {
+  background: #d26d68;
+  margin-right: 5%;
+  width: 20%;
+}
+.tablepress tbody td,
+.tablepress tfoot th {
+  border-top: 1px solid #ddd;
+  border-top: 0;
+}
+.tablepress tbody tr:first-child td {
+  border-top: 0;
+}
+.dataTables_scrollHead {
+  margin-top: -40px;
+}
+/** Pagina Categoria 1
+**********************************/
+/** Lo Nuevo Pagina de Entradas **//** Imagen Destacada **/
+.contenedor-post-individual {
+  width: 80%;
+  padding: 1.5em;
+  padding-bottom: 3em;
+  margin-top: 2.4em;
+  margin-left: 10%;
+  position: relative;
+}
+.contenedor-post-individual article {
+  margin-top: 20px;
+}
+.imagen-post-individual {
+  background: #da6f5f;
+  padding: 1em;
+  padding-bottom: 2em;
+  height: auto;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: 0 9px 14px -5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 9px 14px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 9px 14px -5px rgba(0, 0, 0, 0.5);
+}
+.imagen-post-individual img {
+  width: 100%;
+  height: auto;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.titulo-post-individual {
+  margin-top: 20px;
+  font-size: 1em;
+  color: #3eadc4;
+  padding-left: 3%;
+  text-transform: uppercase;
+}
+.titulo-post-individual h3 {
+  margin: 0;
+}
+.fecha-post-individual {
+  color: #da6f5f;
+  padding-left: 3%;
+  text-transform: uppercase;
+  font-size: 1.3sem;
+}
+.fecha-post-individual p {
+  margin: 0;
+}
+.contenido-post-individual {
+  color: #726958;
+  padding-left: 3%;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-top: 10px;
+}
+.contenido-post-individual p {
+  margin: 0;
+}
+a.excerpt-read-more {
+  background: #d8762d;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 3px 20px;
+  border: solid 3px #ffffff;
+  position: absolute;
+  margin-left: 10px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+  box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+}
+a.excerpt-read-more:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+/** Lo Nuevo Individual **//** Imagen Destacada **/
+.contenedor-lo-nuevo-imagen-destacada {
+  background: #d8762d;
+  width: 80%;
+  padding: 1.5em;
+  padding-bottom: 3em;
+  margin-left: 10%;
+  margin-top: 2.4em;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.lo_nuevo-imagen-destacada img {
+  width: 100%;
+  height: auto;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+/** Contenido **/
+.contenido-lo-nuevo {
+  width: 80%;
+  left: 10%;
+  padding: 1em;
+  font-size: 1.750em;
+  color: #ffffff;
+}
+/** Pagina Categoria 2
+**********************************/
+/** Lo Nuevo Pagina de Entradas **//** Imagen Destacada **/
+.contenedor-post-individual2 {
+  width: 80%;
+  padding: 1.5em;
+  padding-bottom: 3em;
+  margin-top: 2.4em;
+  margin-left: 10%;
+  position: relative;
+}
+.contenedor-post-individual2 article {
+  margin-top: 20px;
+}
+.imagen-post-individual2 {
+  background: #3eadc4;
+  padding: 1em;
+  border: solid 5px #ffffff;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+  box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+}
+.imagen-post-individual2 img {
+  width: 100%;
+  height: auto;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.titulo-post-individual2 {
+  margin-top: -2px;
+  font-size: 1em;
+  color: #ba2020;
+  padding-left: 3%;
+  text-transform: uppercase;
+}
+.titulo-post-individual2 h3 {
+  margin: 0;
+}
+.fecha-post-individual2 {
+  color: #f5d743;
+  padding-left: 3%;
+  text-transform: uppercase;
+  font-size: 1.3sem;
+}
+.fecha-post-individual2 p {
+  margin: 0;
+}
+.contenido-post-individual2 {
+  color: #ffffff;
+  padding-left: 3%;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-top: 10px;
+}
+.contenido-post-individual2 p {
+  margin: 0;
+}
+.contenido-post-individual2 a.excerpt-read-more {
+  background: #ba2020;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 3px 20px;
+  border: solid 3px #ffffff;
+  position: absolute;
+  margin-left: 10px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+  box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+}
+.contenido-post-individual2 a.excerpt-read-more2:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+/** Lo Nuevo Individual **//** Imagen Destacada **/
+.contenedor-lo-nuevo-imagen-destacada2 {
+  background: #d8762d;
+  width: 80%;
+  padding: 1.5em;
+  padding-bottom: 3em;
+  margin-left: 10%;
+  margin-top: 2.4em;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.lo_nuevo-imagen-destacada2 img {
+  width: 100%;
+  height: auto;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+/** Contenido **/
+.contenido-lo-nuevo2 {
+  width: 80%;
+  left: 10%;
+  padding: 1em;
+  font-size: 1.750em;
+  color: #ffffff;
+}
+/** Dudas
+**********************************/
+/** Preguntas Frecuentes **/
+.preguntas-frecuentes {
+  width: 55%;
+}
+.titulo-preguntas-frecuentes {
+  color: #fff;
+  margin-top: 1.2em;
+  text-align: center;
+  font-size: 2.250em;
+  background-color: #da6f5f;
+  border: solid 3px #f5efd9;
+  -webkit-border-radius: 15px 15px 0px 0px;
+  -moz-border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
+}
+.titulo-preguntas-frecuentes p {
+  margin: 0;
+}
+.contenedor-preguntas-frecuentes {
+  background-color: #d8762d;
+  color: #726958;
+  margin-top: 0.25em;
+  margin-bottom: 0.625em;
+  padding: 1.5em;
+  font-size: 1.5em;
+  border: solid 3px #f5efd9;
+  -webkit-border-radius: 0 0 15px 15px;
+  -moz-border-radius: 0 0 15px 15px;
+  border-radius: 0 0 15px 15px;
+  -moz-box-shadow: 3px 3px 22px -7px #000000;
+  -webkit-box-shadow: 3px 3px 22px -7px #000000;
+  box-shadow: 3px 3px 22px -7px #000000;
+}
+.contenedor-preguntas-frecuentes p {
+  line-height: 2em;
+}
+.contenido-preguntas-frecuentes {
+  background: #ba2020;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 17px 135px -40px rgba(0, 0, 0, 0.5);
+}
+.contacto-social-empresa {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/** Contacto **/
+.contacto-preguntas-frecuentes {
+  width: 55%;
+}
+.interior-contacto-preguntas-frecuentes {
+  width: 100%;
+  background-color: #ba2020;
+  margin-top: 3.4em;
+  margin-bottom: 2em;
+  font-size: 1em;
+  border: solid 3px #ffffff;
+  text-align: center;
+  min-height: 375px;
+  position: relative;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: 3px 3px 22px -7px #000000;
+  -webkit-box-shadow: 3px 3px 22px -7px #000000;
+  box-shadow: 3px 3px 22px -7px #000000;
+}
+.interior-contacto-preguntas-frecuentes p {
+  line-height: 1.2em;
+}
+.titulo-contacto-preguntas-frecuentes {
+  width: 90%;
+  left: 5%;
+  top: -50px;
+  position: absolute;
+  color: #ffffff;
+  background-color: #3eadc4;
+  font-size: 2.25em;
+  border: solid 3px #f5efd9;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: -2px 6px 24px -8px #000000;
+  -webkit-box-shadow: -2px 6px 24px -8px #000000;
+  box-shadow: -2px 6px 24px -8px #000000;
+}
+.titulo-contacto-preguntas-frecuentes p {
+  line-height: 1.2em;
+}
+.form-contacto-preguntas-frecuentes {
+  position: absolute;
+  text-align: left;
+  left: 5%;
+  top: 5%;
+  width: 100%;
+  color: #ffffff;
+}
+.form-contacto-preguntas-frecuentes .wpcf7-not-valid-tip {
+  background: #3eadc4;
+  border: none;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+div.wpcf7-mail-sent-ok {
+  background: #3eadc4;
+  border: none;
+  color: #ffffff;
+  padding: 5px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 0;
+}
+.nombre-contacto-form {
+  background: #f5efd9;
+  border: none;
+  color: #000000;
+  margin-top: 10px;
+  width: 90%;
+  padding: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: inset 0 5px 20px -3px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: inset 0 5px 20px -3px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 5px 20px -3px rgba(0, 0, 0, 0.6);
+}
+.email-contacto-form {
+  background: #f5efd9;
+  border: none;
+  color: #000000;
+  margin-top: 10px;
+  width: 90%;
+  padding: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: inset 0 5px 20px -3px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: inset 0 5px 20px -3px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 5px 20px -3px rgba(0, 0, 0, 0.6);
+}
+.mensaje-contacto-form {
+  background: #f5efd9;
+  border: none;
+  color: #000000;
+  margin-top: 10px;
+  width: 90%;
+  padding: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: inset 0 5px 20px -3px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: inset 0 5px 20px -3px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 5px 20px -3px rgba(0, 0, 0, 0.6);
+}
+.boton-enviar {
+  color: #ffffff;
+  width: 160px;
+  height: 116px;
+  border: none;
+  background: url(../images/boton-enviar.png) no-repeat;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  margin-right: -12%;
+}
+/** Contacto
+**********************************/
+/** Informacion del Contacto **/
+.informacion-contacto {
+  width: 70%;
+  background-color: #d8762d;
+  margin-top: 4.4em;
+  margin-bottom: 0.625em;
+  font-size: 1em;
+  border: solid 3px #ffffff;
+  text-align: center;
+  min-height: 375px;
+  -webkit-border-radius: 15px 15px 15px 15px;
+  -moz-border-radius: 15px 15px 15px 15px;
+  border-radius: 15px 15px 15px 15px;
+}
+.informacion-contacto p {
+  line-height: 1.2em;
+}
+.interior-informacion-contacto {
+  padding-top: 50px;
+  padding-bottom: 10px;
+  position: relative;
+  width: 90%;
+}
+.fondo-contacto {
+  position: absolute;
+}
+.fondo-contacto img {
+  width: 100%;
+  height: 270px;
+}
+.logo-informacion-contacto {
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 15px;
+}
+.texto-informacion-contacto {
+  position: absolute;
+  width: 100%;
+}
+.texto-informacion-contacto p {
+  color: #ffffff;
+  font-size: 1.8em;
+  padding-top: 75px;
+}
+.correo-informacion-contacto {
+  position: absolute;
+  width: 100%;
+}
+.correo-informacion-contacto p {
+  color: #f5d743;
+  font-size: 1.7em;
+  padding-top: 170px;
+}
+/** Secion Redes Sociales **/
+.redes-sociales-contacto {
+  width: 70%;
+}
+.titulo-social-contacto {
+  color: #fff;
+  margin-top: 1.2em;
+  text-align: center;
+  font-size: 2.250em;
+  background-color: #3eadc4;
+  -webkit-border-radius: 15px 15px 0px 0px;
+  -moz-border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
+}
+.titulo-social-contacto p {
+  margin: 0;
+}
+.contenido-social-contacto {
+  -webkit-box-shadow: 0 0 4px 0 #444444;
+  -moz-box-shadow: 0 0 4px 0 #444444;
+  box-shadow: 0 0 4px 0 #444444;
+  background: url(../images/fondo-textura.png) repeat;
+  color: #726958;
+  margin-top: 0.625em;
+  margin-bottom: 0.625em;
+  padding-top: 0.313em;
+  padding-bottom: 0.313em;
+  /*padding-left: 2.5em;
+				padding-right: 2.5em;						*/
+
+  font-size: 1,5em;
+  -webkit-border-radius: 0px 0px 15px 15px;
+  -moz-border-radius: 0px 0px 15px 15px;
+  border-radius: 0px 0px 15px 15px;
+  -moz-box-shadow: inset 0 0 30px -8px #000000;
+  -webkit-box-shadow: inset 0 0 30px -8px #000000;
+  box-shadow: inset 0 0 30px -8px #000000;
+}
+.contenido-social-contacto p {
+  line-height: 2em;
+}
+.contacto-social-empresa {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.contacto-facebook {
+  float: auto;
+  margin-left: 0px;
+}
+/** Registro Completo
+**********************************//** Contenedor Registro **/
+.contenedor-registro {
+  width: 75%;
+}
+.titulo-registro {
+  width: 100%;
+  margin-left: 0;
+  color: #fff;
+  margin-top: 1.2em;
+  text-align: center;
+  font-size: 2.250em;
+  background-color: #993147;
+  -webkit-border-radius: 15px 15px 0 0;
+  -moz-border-radius: 15px 15px 0 0;
+  border-radius: 15px 15px 0 0;
+}
+.titulo-registro p {
+  margin: 0;
+}
+/** Registro **/
+.registro-completo {
+  margin-top: 12px;
+  margin-bottom: 55px;
+  background: #bb5450;
+  color: #ffffff;
+  padding: 30px;
+  overflow: hidden;
+  -webkit-border-radius: 0 0 15px 15px;
+  -moz-border-radius: 0 0 15px 15px;
+  border-radius: 0 0 15px 15px;
+  -moz-box-shadow: inset 0 0 50px -8px #000000;
+  -webkit-box-shadow: inset 0 0 30px -8px #000000;
+  box-shadow: inset 0 0 30px -8px #000000;
+}
+.registro-interior div.wpcf7-validation-errors {
+  background: #3eadc4;
+  color: #ffffff;
+  border: none;
+  width: 75%;
+  text-align: center;
+}
+.titulo-1 {
+  background: #d8762d;
+  font-size: 1.2em;
+  padding: 10px;
+}
+.preguntas-1 {
+  background: #ba2020;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 15px;
+  overflow: hidden;
+}
+.preguntas-1 span.wpcf7-not-valid-tip {
+  background: #3eadc4;
+  border: none;
+  line-height: 1em;
+  padding: 10px;
+  text-align: center;
+}
+.registro-p {
+  float: left;
+  width: 100%;
+  padding: 5px;
+}
+.registro-p p {
+  float: left;
+  margin: 0;
+  font-size: 1.2em;
+  width: 50%;
+}
+.registro-p p .p-completo {
+  background: #a91616;
+  border: none;
+  color: #f5d743;
+  margin-left: 10px;
+  width: 100%;
+  padding: 5px;
+  font-size: 1em;
+}
+.p-completo {
+  margin: 0;
+  background: #a91616;
+  border: none;
+  color: #f5d743;
+  margin-left: 0px;
+  width: 50%;
+  padding: 5px;
+  font-size: 1em;
+}
+.boton-enviar-registro {
+  position: absolute;
+  right: -70px;
+  bottom: -40px;
+}
+.enviar-completo {
+  border: none;
+  width: 275px;
+  height: 92px;
+  background: url(../images/boton-registro.png) no-repeat;
+}
+/** Form Widget
+**********************************/
+.wpcf7 {
+  width: 100%;
+  left: 0;
+  position: relative;
+  overflow: visible;
+}
+.wpcf7 div.wpcf7-validation-errors {
+  width: auto;
+  border: none;
+  background: #3eadc4;
+  color: #ffffff;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+}
+.formulario-widget {
+  position: relative;
+  width: 100%;
+  background: #ba2020;
+  padding: 15px;
+  border: solid 3px #ffffff;
+  color: #3eadc4;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+.formulario-widget p {
+  padding: 0;
+  margin: 0;
+}
+.segmento,
+.segmento2,
+.segmento3,
+.segmento4 {
+  width: 100%;
+  padding: 5px;
+  padding-left: 5%;
+  background: #ffffff;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+.segmento span.wpcf7-not-valid-tip,
+.segmento2 span.wpcf7-not-valid-tip,
+.segmento3 span.wpcf7-not-valid-tip,
+.segmento4 span.wpcf7-not-valid-tip {
+  width: 80%;
+  color: #ffffff;
+  background: #3eadc4;
+  border: none;
+  line-height: 1em;
+  padding: 5px;
+  text-align: center;
+}
+.texto-widget {
+  width: 45%;
+  float: left;
+}
+.campo-widget {
+  width: 55%;
+  float: left;
+}
+.nombre-contacto-widget {
+  background: #d8762d;
+  width: 100%;
+  border: none;
+  padding: 14px;
+  color: #f5d743;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+.escuela-contacto-widget,
+.email-contacto-widget {
+  background: #d8762d;
+  width: 100%;
+  border: none;
+  padding: 9px;
+  color: #f5d743;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+.segmento2,
+.segmento3 {
+  margin-top: 10px;
+}
+.segmento2 .texto-widget,
+.segmento3 .texto-widget {
+  padding-top: 5px;
+}
+.segmento4 {
+  margin-top: 10px;
+}
+.segmento4 .texto-widget {
+  padding-top: 5px;
+}
+.estado-campo-form {
+  width: 100%;
+  color: #f5d743;
+  border: none;
+  background: #d8762d;
+  padding: 10px;
+  -webkit-appearance: none;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+.estado-campo-form select {
+  background: none;
+  width: 87%;
+  border: none;
+  margin-left: 10px;
+  color: #ffffff;
+}
+.formulario-widget input[type="submit"] {
+  background: url(../images/enviar2.png) no-repeat;
+  width: 90px;
+  height: 108px;
+  position: absolute;
+  border: none;
+  right: 0;
+  bottom: 0;
+  margin-bottom: -80px;
+}
+/** Facebook Widget **/
+.facebook-widget {
+  background: #3eadc4;
+  width: 100%;
+  margin-left: 0;
+  height: auto;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 80px;
+  -webkit-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+}
+.facebook-contenedor,
+.facebook-contenedor {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  background: #e6e9f1;
+}
+.facebook-logo,
+.twitter-logo {
+  float: left;
+}
+.facebook-titulo,
+.twitter-titulo {
+  color: #e0e6d8;
+  font-size: 30px;
+  margin-left: 50px;
+}
+.fb_iframe_widget,
+.fb_iframe_widget span,
+.fb_iframe_widget span iframe[style] {
+  width: 100% !important;
+  border: none;
+  background: #fff;
+}
+._4s7c {
+  border: none;
+  background: #fff;
+}
+/** Twitter Widget **/
+.twitter-widget {
+  background: #3eadc4;
+  width: 100%;
+  margin-left: 0;
+  height: auto;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 50px;
+  -webkit-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 20px 38px -17px rgba(0, 0, 0, 0.3);
+}
+.twitter-contenedor {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  background: #e6e9f1;
+}
+.twitter-logo {
+  float: left;
+}
+.twitter-titulo {
+  color: #e0e6d8;
+  font-size: 30px;
+  margin-left: 50px;
+}
+#text-3 {
+  padding: 0;
+}
+/** Generales
+**********************************/
+.baner-interior {
+  font-size: 2.5em;
+}
+#content {
+  webkit-box-shadow: inset 0px 11px 25px -10px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: inset 0px 11px 25px -10px rgba(0, 0, 0, 0.45);
+  box-shadow: inset 0px 11px 25px -10px rgba(0, 0, 0, 0.45);
+}
+.baner-titulo {
+  -webkit-box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+  box-shadow: 7px 7px 10px rgba(50, 50, 50, 0.3);
+}
+#sidebar1 {
+  margin-top: 4.4em;
+}
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop. 
+
+******************************************************************/
+/* 
+you can call the larger styles if you want, but there's really no need 
+*/
+/******************************************************************
+ADDITIONAL IE FIXES
+These fixes are now ONLY seen by IE, so you don't have to worry
+about using prefixes, although it's best practice. For more info
+on using Modernizr classes, check out this link:
+http://www.modernizr.com/docs/
+******************************************************************/
+/*
+For example, you can use something like:
+
+.no-textshadow .class { ... }
+
+You can also target specific versions by using the classes applied to
+the html element. These can sometimes change, so take a look inside the
+header.php file to see what they are:
+
+
+.lt-ie8 .class { ... } hola
+
+*/
+.lt-ie8 .sub-menu .menu-item-20 a {
+  margin-top: 0px;
+}
+.lt-ie8 .nav li ul.sub-menu {
+  margin-top: 13px;
+}
+.lt-ie9 .sub-menu .menu-item-20 a {
+  margin-top: 0px;
+}
+.lt-ie9 .nav li ul.sub-menu {
+  margin-top: 13px;
+}
