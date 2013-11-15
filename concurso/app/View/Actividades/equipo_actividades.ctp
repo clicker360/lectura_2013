@@ -116,7 +116,6 @@ $("#select_tipo").change(function(){
         padding: 5px;
     }
     .hacerActividadDiv{
-        position: relative;
         float: left;
         border: none;
         width: 100px;
