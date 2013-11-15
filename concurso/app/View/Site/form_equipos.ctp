@@ -31,12 +31,12 @@
                             <p> <label for="data[Equipo][nombre]"><?php echo ( 'Nombre del círculo de lectura:' ); ?></label> </p>
                             <input type="text" name="data[Equipo][nombre]" id="user_circulo" class="p-completo" value="<?php echo (isset($this->data['Equipo']['nombre'])) ? $this->data['Equipo']['nombre'] : '' ; ?>" size="20" />
                         </div>
-
+                        <!--
                         <div class="registro-p clearfix">
                             <p> <label for="data[Equipo][integrantes]"><?php echo ( 'Número de Integrantes:' ); ?></label> </p>
                             <input type="text" name="data[Equipo][integrantes]" id="user_integrantes" class="p-completo" value="<?php echo (isset($this->data['Equipo']['integrantes'])) ? $this->data['Equipo']['integrantes'] : '' ; ?>" size="20" />
                         </div>
-
+                        -->
                     </div>
 
 

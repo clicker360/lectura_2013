@@ -127,6 +127,7 @@ class SiteController extends AppController {
     public function perfil(){
         $this->layout = 'olimpiada';
         $path =substr($this->params->url, 0, (strpos($this->params->url,'/') == true) ? strpos($this->params->url,'/') : strlen($this->params->url));
+        
         $id_equipo = false;
         if($path == 'actividades'){
             $id_equipo = (isset($this->params->params['id_equipo'])) ? $this->params->params['id_equipo'] : false;
