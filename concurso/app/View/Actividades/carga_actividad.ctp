@@ -66,7 +66,7 @@ if($p['type'] == 'imagen' && (isset($this->data['Respuesta'][$kp]['value']) && $
 
 <div class="return">
 <?php
-echo $this->Form->button('Regresar',array('type'=>'button', 'href'=>$this->Html->url('/EquipoActividades/'.$equipo_id,true),'class'=>'regresarListaActividades alineado botonesActividades'));
+echo $this->Form->button('Regresar', array('type' => 'button', 'href' => $this->Html->url('/EquipoActividades/'.$equipo_id,true),'class'=>'regresarListaActividades alineado botonesActividades'));
 ?>
 </div>
 <?php
@@ -115,3 +115,57 @@ $(".regresarListaActividades").click(function(){
     return false;
 })
 </script>
+<style>
+    .dataActividades div{
+        padding-bottom: 20px;
+    }
+    .dataActividades span{
+        font-weight: bold;
+        width: 50px;
+    }
+    .boxLeft2 .input label{
+        width: 100%;
+    }
+    .boxLeft2 .input textarea{
+        width: 100%;
+        position: relative;
+        float: left;
+        border: none;
+        background-color: #f98381;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        margin-top: 10px;
+        border:  10px solid #f5efd9;
+        padding: 10px;
+    }
+    .actividadesBoxes .return button{
+        float: right;
+        margin-top: 30px;
+        position: relative;
+        border: none;
+        background-color: #66a7db;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        border:  10px solid #f5efd9;
+        padding: 10px;
+        color: #FFFFFF;
+    }
+    .actividadesBoxes .submit input{
+        float: left;
+        margin-top: 30px;
+        position: relative;
+        border: none;
+        background-color: #66a7db;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        border:  10px solid #f5efd9;
+        padding: 10px;
+        color: #FFFFFF;
+    }
+    .actividadesBoxes textarea{
+       
+    }
+</style>

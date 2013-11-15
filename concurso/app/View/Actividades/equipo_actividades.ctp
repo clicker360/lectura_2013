@@ -23,54 +23,54 @@
 <div class="nombreEquipo"><span>Equipo: </span><?php echo $equipo['Equipo']['nombre']; ?></div>
 
 <div class="actividadesBoxes">
-<div class="boxLeft">
-    <h2>Actividades Disponibles</h2>
-    <?php
-    $acts_inf = array();
-    $acts_lit = array();
-    ?>
-    Tipo: <?php echo $this->Form->input('tipos',array('options'=>array('informativo' => 'Informativos', 'literario' => 'Literarios'),'label'=>false,'id'=>'select_tipo'));
+    <div class="left">
+        <h2>Actividades Disponibles</h2>
+        <?php
+        $acts_inf = array();
+        $acts_lit = array();
+        ?>
+        <?php echo $this->Form->input('tipos',array('options'=>array('informativo' => 'Informativos', 'literario' => 'Literarios'),'label'=>'Tipo: ','id'=>'select_tipo'));
 
-        foreach($restoActividades as $ka => $a){
-            $act = array(
-            $a['Actividad']['numero'],
-            $a['Actividad']['titulo'],
-            (count($actividades) < 5) ? $this->Html->link('Realizar','/CargaActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall hacerActividad')) : ''
-            );
-            if($a['Actividad']['tipo'] == 'informativo'){
-                $acts_inf[] = $act;
-            }else if($a['Actividad']['tipo'] == 'literario'){
-                $acts_lit[] = $act;
-            }  
-        }
-    ?>
+            foreach($restoActividades as $ka => $a){
+                $act = array(
+                $a['Actividad']['numero'],
+                $a['Actividad']['titulo'],
+                (count($actividades) < 5) ? '<div class="hacerActividadDiv"><div>'.$this->Html->link('Realizar','/CargaActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall hacerActividad')).'</div></div>' : ''
+                );
+                if($a['Actividad']['tipo'] == 'informativo'){
+                    $acts_inf[] = $act;
+                }else if($a['Actividad']['tipo'] == 'literario'){
+                    $acts_lit[] = $act;
+                }  
+            }
+        ?>
 
-    <table class="restoActividades" id="informativoTabla">
-        <?php echo $this->Html->tableCells($acts_inf); ?>
-    </table>
-    <table class="restoActividades" id="literarioTabla" style="display:none;">
-        <?php echo $this->Html->tableCells($acts_lit); ?>
+        <table class="restoActividades" id="informativoTabla">
+            <?php echo $this->Html->tableCells($acts_inf); ?>
+        </table>
+        <table class="restoActividades" id="literarioTabla" style="display:none;">
+            <?php echo $this->Html->tableCells($acts_lit); ?>
 
-    </table>
+        </table>
+    </div>
+    <div class="right">
+        <h2>Actividades Realizadas</h2>
+        <div class="countRealizadas"><span>Tu equipo lleva: </span><?php echo count($actividades); ?>/5 <span>actividades realizadas. Recuerda que la fecha límite para enviar las evidencias de las 5 actividades requeridas del Bloque 2, es el 8 de febrero de 2013.</span></div>
+        <table class="actividadEquipo">
+        <?php foreach($actividades as $ka => $a){ ?>
+            <?php $act = array(
+                $a['Actividad']['numero'],
+                $a['Actividad']['titulo'],
+                $this->Html->link('Editar','/CargaActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall hacerActividad')),
+                $this->Html->link('Eliminar','/BorraActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall borrarActividad','onclick'=>"return confirm('¿Desea eliminar esta actividad?');"))
+            ); ?>
+            <?php echo $this->Html->tableCells($act); ?>
+        <?php } ?>
+        </table>
+
+    </div>
+    <div class="regresar"><?php echo $this->Form->button('Regresar',array('class'=>'regresarEquiposActividades'))?></div>
 </div>
-
-<div class="boxRight">
-    <h2>Actividades Realizadas</h2>
-    <div class="countRealizadas"><span>Tu equipo lleva: </span><?php echo count($actividades); ?>/5 <span>actividades realizadas. Recuerda que la fecha límite para enviar las evidencias de las 5 actividades requeridas del Bloque 2, es el 8 de febrero de 2013.</span></div>
-    <table class="actividadEquipo">
-    <?php foreach($actividades as $ka => $a){ ?>
-        <?php $act = array(
-            $a['Actividad']['numero'],
-            $a['Actividad']['titulo'],
-            $this->Html->link('Editar','/CargaActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall hacerActividad')),
-            $this->Html->link('Eliminar','/BorraActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall borrarActividad','onclick'=>"return confirm('¿Desea eliminar esta actividad?');"))
-        ); ?>
-        <?php echo $this->Html->tableCells($act); ?>
-    <?php } ?>
-    </table>
-
-</div>
-<div class="regresar"><?php echo $this->Form->button('Regresar',array('class'=>'regresarEquiposActividades'))?></div>
 <script type="text/javascript">
 $(".regresarEquiposActividades").click(function(){
     $(".equiposActividades").show();
@@ -94,3 +94,69 @@ $("#select_tipo").change(function(){
 })*/
     
 </script>
+<style>
+    .actividadesBoxes .left{
+        width: 50%;
+        float: left;
+    }
+    .actividadesBoxes .right{
+        width: 50%;
+        float: right;
+    }
+    select#select_tipo{
+        background: #a91616;
+        border: none;
+        color: #f5d743;
+        margin-left: 0px;
+        width: 70%;
+        padding: 5px;
+        font-size: 1em;
+    }
+    .restoActividades tr td{
+        padding: 5px;
+    }
+    .hacerActividadDiv{
+        position: relative;
+        float: left;
+        border: none;
+        width: 100px;
+        height: 42px;
+        background-color: #FFFFFF;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        left: 70%;
+        margin-top: 10px;
+        padding-left: 4px;
+    }
+    .hacerActividadDiv div{
+        width: 90px;
+        height: 32px;
+        background-color: blue;
+        background-color: #3eadc4;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        right: 30%;
+        margin-top: 5px;
+        text-align: center;
+        font-size: 18px;
+    }
+    .hacerActividadDiv div a, .hacerActividadDiv div a:hover{
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+    .regresar button{
+        float: right;
+        margin-top: 30px;
+        position: relative;
+        border: none;
+        background-color: #66a7db;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        border:  10px solid #f5efd9;
+        padding: 10px;
+        color: #FFFFFF;
+    }
+</style>

@@ -367,7 +367,7 @@ echo $header;
         -moz-border-radius: 50px;
         border-radius: 50px;
         left: 70%;
-        margin-top: 60px;
+        margin-top: 10px;
         padding-left: 4px;
     }
     .perfil #mis_actividades .equipos .ver div,
@@ -383,6 +383,9 @@ echo $header;
         margin-top: 5px;
         text-align: center;
         font-size: 24px;
+    }
+    .ver a , .ver a:hover {
+        color: #FFFFFF;
     }
     .perfil #mis_actividades .equipos .ver div a,
     .perfil #mis_equipos .equipos .ver div a{
@@ -446,7 +449,7 @@ echo $header;
         text-align: center;
     }
     .equipo_li .equipo_content div div{
-        font-size: 36px;
+        font-size: 26px;
         text-transform: uppercase;
     }
     @media only screen and (min-width: 768px){
@@ -743,6 +746,9 @@ echo $header;
     }
     .perfil .agregarEquipo:hover{
         color: #FFFFFF;
+    }
+    .cargaAjaxActividades{
+        font-size: 18px;
     }
         
 </style>

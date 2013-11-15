@@ -202,7 +202,7 @@ class ActividadesController extends AppController {
         foreach($actividades as $a){
             $acts_id[] = $a['Actividad']['id'];
         }
-        $restoActividades = $this->Actividad->find('all',array('conditions'=>array('Actividad.id NOT' => $acts_id,'Actividad.etapa' => 1)));
+        $restoActividades = $this->Actividad->find('all',array('conditions'=>array('Actividad.id NOT' => $acts_id,'Actividad.etapa' => 1),'order' => array('Actividad.numero' => 'ASC')));
         $this->set(compact('equipo','actividades','restoActividades'));
     }
     function EquipoDiario($id){
