@@ -411,7 +411,7 @@ class SiteController extends AppController {
                     $equipo_ant = $this->Equipo->find('first',array('conditions'=>array('Equipo.id'=>$equipo['Equipo']['id'])));
                     if($equipo_ant['Equipo']['profesores_id'] != $this->Session->read('Profesor.Profesor.id'))
                             exit();
-                    $equipo['Equipo']['nombre'] = $equipo_ant['Equipo']['nombre'];
+                    //$equipo['Equipo']['nombre'] = $equipo_ant['Equipo']['nombre'];
                 }
                 $equipo['Equipo']['lectura'] = 1;
                 $this->Equipo->set($equipo);

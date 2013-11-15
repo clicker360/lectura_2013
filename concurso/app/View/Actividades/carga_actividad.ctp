@@ -110,7 +110,7 @@ $(".regresarListaActividades").click(function(){
     var href = $(this).attr('href')
         $.get(href,function(equipos){
             $(".equiposActividades").hide();
-            $(".cargaAjax").html(equipos);
+            $(".cargaAjaxActividades").html(equipos);
         })
     return false;
 })

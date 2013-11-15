@@ -48,8 +48,6 @@
             </div>
         </div>                
     </div>    
-
-
     <div class="tab" id="mis_equipos">
 
         <?php if(count($equipos) < 3) echo $this->Html->link('Agregar equipo', $this->Html->url('/form_equipos', true), array('class' => 'agregarEquipo')); ?>
@@ -61,9 +59,13 @@
                         <div class="equipo_head"></div>
                         <div class="equipo_content">
                             <div>
-                                <div class="nombre_equipo"><?php echo $e['Equipo']['nombre']; ?></div>
-                                <!--<div class="tema_equipo">Tema: <?php echo $e['Equipo']['tema']; ?></div>-->
-                                <!--<div class="editar_equipo"><?php echo $this->Html->link('Editar', $this->Html->url('/form_equipos/' . $e['Equipo']['id'] . '?lightbox[width]=680&amp;lightbox[height]=720&amp;lightbox[autoresize]=false', true), array('class' => 'lightbox btn-mas fltR bgC')); ?></div>-->
+                                <div class="nombre_equipo"><?php echo $e['Equipo']['nombre']; ?>
+                                    <div class="ver">
+                                        <div>
+                                             <?php echo $this->Html->link('Editar', $this->Html->url('/form_equipos/' . $e['Equipo']['id'], true), array('class' => 'lightbox btn-mas fltR bgC')); ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -74,17 +76,23 @@
         <?php } ?>
 
     </div>
-    <div class="right tab maswW arribap" id="mis_actividades">
-
-        <?php //echo $this->Html->link('Agregar equipo',$this->Html->url('/form_equipos?lightbox[width]=680&amp;lightbox[height]=730&amp;lightbox[autoresize]=false',true),array('class'=>'lightbox btn-mas fltR bgB')); ?>
-        <h2>Actividades Bloque 1</h2>
-        <?php if ($equipos) { ?>
+    <div class="tab" id="mis_actividades">        
+         <?php if ($equipos) { ?>           
             <ul class="equipos equiposActividades">
-                <?php foreach ($equipos as $e) { ?>
-                    <li>
-                        <div class="nombre_equipo"><?php echo $e['Equipo']['nombre']; ?></div>
-                        <!--<div class="tema_equipo">Tema: <?php echo $e['Equipo']['tema']; ?></div>-->
-                        <div class="editar_quipo"><?php echo $this->Html->link('Ver', $this->Html->url('/EquipoActividades/' . $e['Equipo']['id'], true), array('id' => 'verEquipo_' . $e['Equipo']['id'], 'class' => 'EquipoActividades btn-mas fltR bgC')); ?></div>
+                <?php foreach ($equipos as $k => $e) { ?>
+                    <li class="equipo_li <?php echo ($k%2 == 0) ? 'left' : 'right'?>">
+                        <div class="equipo_head"></div>
+                        <div class="equipo_content">
+                            <div>
+                                <div class="nombre_equipo"><?php echo $e['Equipo']['nombre']; ?>
+                                    <div class="ver">
+                                        <div>
+                                            <?php echo $this->Html->link('Ver', $this->Html->url('/EquipoActividades/' . $e['Equipo']['id'], true), array('id' => 'verEquipo_' . $e['Equipo']['id'], 'class' => 'EquipoActividades btn-mas fltR bgC')); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 <?php } ?>
             </ul>

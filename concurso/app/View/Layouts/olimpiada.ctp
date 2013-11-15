@@ -235,6 +235,11 @@ echo $header;
         width: 80%;
         margin: 0 auto;
     }
+    .perfil #mis_actividades{
+        display: table;
+        width: 80%;
+        margin: 0 auto;
+    }
     .perfil #descargas{
         display: table;
         width: 30%;
@@ -349,6 +354,39 @@ echo $header;
         color: #FFFFFF;
         text-decoration: none;
         font-size: 20px;
+    }
+    .perfil #mis_actividades .equipos .ver,
+    .perfil #mis_equipos .equipos .ver{
+        position: relative;
+        float: left;
+        border: none;
+        width: 100px;
+        height: 42px; 
+        background-color: #FFFFFF;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        left: 70%;
+        margin-top: 10px;
+        padding-left: 4px;
+    }
+    .perfil #mis_actividades .equipos .ver div,
+    .perfil #mis_equipos .equipos .ver div{
+        width: 90px;
+        height: 32px;
+        background-color: blue;
+        background-color: #3eadc4;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        right: 30%;
+        margin-top: 5px;
+        text-align: center;
+        font-size: 24px;
+    }
+    .perfil #mis_actividades .equipos .ver div a,
+    .perfil #mis_equipos .equipos .ver div a{
+        text-decoration: none;
     }
     .equipo_li{
         width: 40%;

@@ -74,14 +74,14 @@
 <script type="text/javascript">
 $(".regresarEquiposActividades").click(function(){
     $(".equiposActividades").show();
-    $(".cargaAjax").html('');
+    $(".cargaAjaxActividades").html('');
     return false;
 })
 $(".hacerActividad").click(function(){
     var href = $(this).attr('href')
     $.get(href,function(equipos){
         $(".equiposActividades").hide();
-        $(".cargaAjax").html(equipos);
+        $(".cargaAjaxActividades").html(equipos);
     })
     return false;
 })
