@@ -123,27 +123,29 @@ class ActividadesController extends AppController {
         if(!$equipo || $this->Session->read('Profesor.Profesor.id') != $equipo['Equipo']['profesores_id'])
                 exit();
         $etapaActividades = $this->Actividad->find('all',array('conditions'=>array('Actividad.etapa' => 2)));
+        $actsEtapa_id = array();
         foreach($etapaActividades as $a){
             $actsEtapa_id[] = $a['Actividad']['id'];
         }
         $actividadesEquipo = $this->EquipoActividad->find('count',array('conditions'=>array('EquipoActividad.actividad_id'=>$actsEtapa_id,'EquipoActividad.equipo_id' => $equipo['Equipo']['id'])));
         if($actividadesEquipo >= 5){
             if(!isset($this->data['EquipoActividad']['id']) || !$this->data['EquipoActividad']['id']){
-                $this->Session->setFlash('Ya se alcanzo el limite de 5 actividades por equipo.','error');
-                $this->redirect(Router::url('/actividades/'.$actividad['EquipoActividad']['equipo_id'],true));
+                $this->Session->setFlash('Ya se alcanzo el limite de 5 actividades por equipo.','default', array(), 'bad');
+                //$this->redirect(Router::url('/actividades/'.$actividad['EquipoActividad']['equipo_id'],true));
+                $this->redirect(Router::url('/perfil/',true));
                 exit();
             }
         }
         $this->autoRender = false;
-        //debug($this->data);
         $actividad = $this->data;
         foreach($actividad['Respuesta'] as $k => $r){
             if(is_array($r['value'])){
                 if($r['value']['name'] != ''){
                     $fileOk = $this->uploadFiles($r['value'],'evidencias');
                     if(isset($fileOk['errors'])){
-                        $this->Session->setFlash($fileOk['errors'],'error');
-                        $this->redirect(Router::url('/actividades/'.$actividad['EquipoActividad']['equipo_id'],true));
+                        $this->Session->setFlash($fileOk['errors'],'default', array(), 'bad');
+                        //$this->redirect(Router::url('/actividades/'.$actividad['EquipoActividad']['equipo_id'],true));
+                        $this->redirect(Router::url('/perfil/',true));
                     }else if($fileOk['final_name']){
                         $actividad['Respuesta'][$k]['value'] = $fileOk['final_name'];
                     }
@@ -151,12 +153,14 @@ class ActividadesController extends AppController {
                     unset($actividad['Respuesta'][$k]);
                 }
             }
-        }
+        }        
+        
         if($this->EquipoActividad->saveAll($actividad))
-             $this->Session->setFlash('La actividad se guardó correctamente.','success');
+             $this->Session->setFlash('La actividad se guardó correctamente.','default', array(), 'good');
         else
-             $this->Session->setFlash('No se pudo guardar la actividad.','error');
-        $this->redirect(Router::url('/actividades/'.$actividad['EquipoActividad']['equipo_id'],true));
+             $this->Session->setFlash('No se pudo guardar la actividad.','default', array(), 'bad');
+        //$this->redirect(Router::url('/actividades/'.$actividad['EquipoActividad']['equipo_id'],true));
+        $this->redirect(Router::url('/perfil/',true));
     }
     function BorraActividad($actividad_id = false, $equipo_id = false){
         if(!$this->Session->check('Profesor'))
@@ -166,10 +170,11 @@ class ActividadesController extends AppController {
                 exit();         
         $this->autoRender = false;
         if($this->EquipoActividad->deleteAll(array('EquipoActividad.actividad_id'=>$actividad_id,'EquipoActividad.equipo_id'=>$equipo_id),true))
-             $this->Session->setFlash('La actividad se borró correctamente.','success');
+             $this->Session->setFlash('La actividad se borró correctamente.','default', array(), 'good');
         else
-             $this->Session->setFlash('No se pudo borrar la actividad.','error');
-        $this->redirect(Router::url('/actividades/'.$equipo_id,true));
+             $this->Session->setFlash('No se pudo borrar la actividad.','default', array(), 'bad');
+        //$this->redirect(Router::url('/actividades/'.$equipo_id,true));
+        $this->redirect(Router::url('/perfil/',true));
     }
     function EquipoActividades($id){
         if(!$this->Session->check('Profesor'))

@@ -367,7 +367,7 @@ echo $header;
         -moz-border-radius: 50px;
         border-radius: 50px;
         left: 70%;
-        margin-top: 10px;
+        margin-top: 60px;
         padding-left: 4px;
     }
     .perfil #mis_actividades .equipos .ver div,

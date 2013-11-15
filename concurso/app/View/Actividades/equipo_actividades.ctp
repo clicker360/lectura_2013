@@ -61,15 +61,14 @@
             <?php $act = array(
                 $a['Actividad']['numero'],
                 $a['Actividad']['titulo'],
-                $this->Html->link('Editar','/CargaActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall hacerActividad')),
-                $this->Html->link('Eliminar','/BorraActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall borrarActividad','onclick'=>"return confirm('¿Desea eliminar esta actividad?');"))
+                '<div class="hacerActividadDiv"><div>'.$this->Html->link('Editar','/CargaActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall hacerActividad')).'</div></div>',
+                '<div class="hacerActividadDiv"><div>'.$this->Html->link('Eliminar','/BorraActividad/'.$a['Actividad']['id'].'/'.$equipo['Equipo']['id'],array('class'=>'botonSmall borrarActividad','onclick'=>"return confirm('¿Desea eliminar esta actividad?');")).'</div></div>'
             ); ?>
             <?php echo $this->Html->tableCells($act); ?>
         <?php } ?>
-        </table>
-
+        </table>        
+        <div class="regresar"><?php echo $this->Form->button('Regresar',array('class'=>'regresarEquiposActividades'))?></div>
     </div>
-    <div class="regresar"><?php echo $this->Form->button('Regresar',array('class'=>'regresarEquiposActividades'))?></div>
 </div>
 <script type="text/javascript">
 $(".regresarEquiposActividades").click(function(){
@@ -157,5 +156,8 @@ $("#select_tipo").change(function(){
         border:  10px solid #f5efd9;
         padding: 10px;
         color: #FFFFFF;
+    }
+    .actividadEquipo tr td{
+        padding: 0px 5px;
     }
 </style>

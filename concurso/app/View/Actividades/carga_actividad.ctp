@@ -126,7 +126,8 @@ $(".regresarListaActividades").click(function(){
     .boxLeft2 .input label{
         width: 100%;
     }
-    .boxLeft2 .input textarea{
+    .boxLeft2 .input textarea,
+    .boxLeft2 .input input{
         width: 100%;
         position: relative;
         float: left;
