@@ -35,7 +35,7 @@ echo $header;
                     </li>
                     <li class="diario">
                         <a href="<?php echo $this->Html->url(array('controller'=>'site','action'=>'perfil')); ?>" id="li_diario" class="li_tab">
-                            Diario
+                            Diario Colectivo
                         </a>
                     </li>
                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171">
@@ -470,20 +470,23 @@ echo $header;
         }
         <?php } ?>
         .nav li:nth-child(1) {
-            width: 20%;
+            width: 16%;
             margin-top: 0px;
         }
         .nav li:nth-child(2) {
-            width: 20%;
+            width: 16%;
         }
         .nav li:nth-child(3) {
-            width: 20%;
+            width: 16%;
         }
         .nav li:nth-child(4) {
-            width: 20%;
+            width: 16%;
         }
         .nav li:nth-child(5) {
-            width: 20%;
+            width: 16%;
+        }
+        .nav li:nth-child(6) {
+            width: 16%;
         }
     }
     
