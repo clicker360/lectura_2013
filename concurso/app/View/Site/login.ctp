@@ -102,3 +102,20 @@ if(!$olvido){
     })
 </script>
 <?php } ?>
+<style>
+    .fltR{
+        float: left;
+        margin-top: 30px;
+        position: relative;
+        border: none;
+        background-color: #66a7db;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        border:  5px solid #f5efd9;
+        padding: 10px;
+        color: #FFFFFF;
+        width: 100px;
+    }
+    
+</style>

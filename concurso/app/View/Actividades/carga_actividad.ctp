@@ -56,7 +56,7 @@ inputsMaxLength[<?php echo ($p['numero']-1); ?>] = ['<?php echo $p['length'][0];
 </script>
 <?php
 if($p['type'] == 'imagen' && (isset($this->data['Respuesta'][$kp]['value']) && $this->data['Respuesta'][$kp]['value']))
-    echo $this->Html->image('../evidencias/'.$this->data['Respuesta'][$kp]['value'],array('style'=>'width: 210px; display: inline-block; padding: 0 35px 5px 0; float:right;'));
+    echo $this->Html->image('../evidencias/'.$this->data['Respuesta'][$kp]['value'],array('style'=>'width: 210px; display: inline-block; padding: 0 35px 5px 0;'));
 
 }
 ?>

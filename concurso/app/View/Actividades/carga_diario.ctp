@@ -9,14 +9,14 @@
 <div id="splitter"></div>
 
 <div class="nombreEquipo"><span>Equipo: </span><?php echo $equipo['Equipo']['nombre']; ?></div>
-<div class="diariosRealizados"><h2><span>Diarios realizados: </span><?php echo $diariosCount; ?>/13</h2></div>
+<!--<div class="diariosRealizados"><h2><span>Diarios realizados: </span><?php echo $diariosCount; ?>/13</h2></div>-->
 <div class="semanaNombre"><h2><?php echo $semanaNombre; ?></h2></div>
 <?php
 echo $this->Form->create('EquipoDiario',array('url'=>'/guardaDiario','ENCTYPE' => "multipart/form-data"));
 echo $this->Form->input('EquipoDiario.id',array('disabled'=>!$edit));
 echo $this->Form->hidden('EquipoDiario.equipo_id',array('type'=>'text','disabled'=>!$edit));
 echo $this->Form->hidden('EquipoDiario.semana',array('type'=>'text','disabled'=>!$edit));
-echo $this->Form->input('EquipoDiario.esta_semana_leimos',array('label'=>'1) Esta semana leímos… (Máximo 60 palabras): ','class'=>'diario_1','disabled'=>!$edit));
+echo $this->Form->input('EquipoDiario.esta_semana_leimos',array('label'=>'1) Estos días leímos… (Máximo 60 palabras): ','class'=>'diario_1','disabled'=>!$edit));
 echo '<div class="error error_1"></div>';
 echo $this->Form->input('EquipoDiario.realizamos',array('label'=>'2) Realizamos … (Máximo 60 palabras): ','class'=>'diario_2','disabled'=>!$edit));
 echo '<div class="error error_2"></div>';
@@ -24,13 +24,17 @@ echo $this->Form->input('EquipoDiario.mas_nos_gusto',array('label'=>'3) Lo que m
 echo '<div class="error error_3"></div>';
 echo $this->Form->input('EquipoDiario.no_nos_gusto',array('label'=>'4) Lo que no nos gustó… (Máximo 60 palabras): ','class'=>'diario_4','disabled'=>!$edit));
 echo '<div class="error error_4"></div>';
-echo $this->Form->input('EquipoDiario.quisieramos_que',array('label'=>' 5) Quisiéramos que… (Máximo 60 palabras): ','class'=>'diario_5','disabled'=>!$edit));
+echo $this->Form->input('EquipoDiario.que_descubrimos',array('label'=>'5) Lo que descubrimos… (Máximo 60 palabras): ','class'=>'diario_5','disabled'=>!$edit));
 echo '<div class="error error_5"></div>';
-echo $this->Form->input('EquipoDiario.la_siguiente_semana',array('label'=>'6) La siguiente semana… (Máximo 60 palabras): ','class'=>'diario_6','disabled'=>!$edit));
+echo $this->Form->input('EquipoDiario.mas_dificil',array('label'=>'6) Lo que nos pareció difícil… (Máximo 60 palabras): ','class'=>'diario_6','disabled'=>!$edit));
 echo '<div class="error error_6"></div>';
-echo $this->Form->input('EquipoDiario.quisieramos_comentar',array('label'=>'7) Quisiéramos comentar que… (reflexiones, dudas, comentarios sobre la experiencia de leer este libro) (Máximo 60 palabras): ','class'=>'diario_7','disabled'=>!$edit));
+echo $this->Form->input('EquipoDiario.quisieramos_que',array('label'=>' 7) Quisiéramos que… (Máximo 60 palabras): ','class'=>'diario_7','disabled'=>!$edit));
 echo '<div class="error error_7"></div>';
-
+//echo $this->Form->input('EquipoDiario.la_siguiente_semana',array('label'=>'6) La siguiente semana… (Máximo 60 palabras): ','class'=>'diario_6','disabled'=>!$edit));
+//echo '<div class="error error_6"></div>';
+echo $this->Form->input('EquipoDiario.quisieramos_comentar',array('label'=>'8) Quisiéramos comentar que… (reflexiones, dudas, comentarios sobre la experiencia de leer este libro) (Máximo 60 palabras): ','class'=>'diario_8','disabled'=>!$edit));
+echo '<div class="error error_8"></div>';
+//ALTER TABLE  `equipo_diario` ADD  `que_descubrimos` TEXT NOT NULL AFTER  `no_nos_gusto` , ADD  `mas_dificil` TEXT NOT NULL AFTER  `que_descubrimos`
 ?>
 
     <div id="fotos_registro">
@@ -108,7 +112,8 @@ $("#EquipoDiarioCargaDiarioForm").submit(function(){
                  $(".error_"+id).show();
                 valid = false;
             }
-        }
+        }        
+        console.log(".error_"+id);
     });
     <?php /*if($nuevo){ ?>
         $("input[type=file]").each(function(){
@@ -124,3 +129,61 @@ $("#EquipoDiarioCargaDiarioForm").submit(function(){
     return valid;
 })
 </script>
+<style>
+    #EquipoDiarioCargaDiarioForm textarea,
+    #EquipoDiarioCargaDiarioForm input{
+        width: 100%;
+        position: relative;
+        float: left;
+        border: none;
+        background-color: #f98381;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        margin-top: 10px;
+        border: 10px solid #f5efd9;
+        padding: 10px;
+    }
+    #EquipoDiarioCargaDiarioForm #fotos_registro{
+        margin: 50px auto;
+    }
+    #EquipoDiarioCargaDiarioForm #fotos_registro img {
+        width: 32%;
+        padding: 2px;
+    }
+    #EquipoDiarioCargaDiarioForm .return button{
+        float: right;
+        margin-top: 30px;
+        position: relative;
+        border: none;
+        background-color: #66a7db;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        border:  10px solid #f5efd9;
+        padding: 10px;
+        color: #FFFFFF;
+    }
+    #EquipoDiarioCargaDiarioForm .submit input{
+        float: left;
+        margin-top: 30px;
+        position: relative;
+        border: none;
+        background-color: #66a7db;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        border:  10px solid #f5efd9;
+        padding: 10px;
+        color: #FFFFFF;
+        width: 110px;
+    }
+    .error{
+        text-transform: uppercase;
+        color: red;
+        text-align: center;
+        width: 100%;
+        font-size: 22px;
+    }
+    
+</style>

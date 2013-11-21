@@ -23,14 +23,19 @@ echo $header;
                             Mi perfil
                         </a>
                     </li>
+                    <li class=mis-equipos">
+                        <a href="<?php echo $this->Html->url(array('controller'=>'site','action'=>'perfil')); ?>?tab=mis_equipos" id="li_mis_equipos" class="li_tab">
+                            Mis equipos
+                        </a>
+                    </li>
                     <li class="mis-actividades">
                         <a href="<?php echo $this->Html->url(array('controller'=>'site','action'=>'perfil')); ?>" id="li_mis_actividades" class="li_tab">
                             Mis actividades
                         </a>
                     </li>
-                    <li class=mis-equipos">
-                        <a href="<?php echo $this->Html->url(array('controller'=>'site','action'=>'perfil')); ?>?tab=mis_equipos" id="li_mis_equipos" class="li_tab">
-                            Mis equipos
+                    <li class="diario">
+                        <a href="<?php echo $this->Html->url(array('controller'=>'site','action'=>'perfil')); ?>" id="li_diario" class="li_tab">
+                            Diario
                         </a>
                     </li>
                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171">
@@ -240,6 +245,11 @@ echo $header;
         width: 80%;
         margin: 0 auto;
     }
+    .perfil #diario{
+        display: table;
+        width: 80%;
+        margin: 0 auto;
+    }
     .perfil #descargas{
         display: table;
         width: 30%;
@@ -355,8 +365,8 @@ echo $header;
         text-decoration: none;
         font-size: 20px;
     }
-    .perfil #mis_actividades .equipos .ver,
-    .perfil #mis_equipos .equipos .ver{
+   
+    .perfil .tab .equipos .ver{
         position: relative;
         float: left;
         border: none;
@@ -370,8 +380,7 @@ echo $header;
         margin-top: 60px;
         padding-left: 4px;
     }
-    .perfil #mis_actividades .equipos .ver div,
-    .perfil #mis_equipos .equipos .ver div{
+    .perfil .tab .equipos .ver div{
         width: 90px;
         height: 32px;
         background-color: blue;
@@ -387,8 +396,7 @@ echo $header;
     .ver a , .ver a:hover {
         color: #FFFFFF;
     }
-    .perfil #mis_actividades .equipos .ver div a,
-    .perfil #mis_equipos .equipos .ver div a{
+    .perfil .tab .equipos .ver div a{
         text-decoration: none;
     }
     .equipo_li{
@@ -462,17 +470,20 @@ echo $header;
         }
         <?php } ?>
         .nav li:nth-child(1) {
-            width: 25%;
+            width: 20%;
             margin-top: 0px;
         }
         .nav li:nth-child(2) {
-            width: 25%;
+            width: 20%;
         }
         .nav li:nth-child(3) {
-            width: 25%;
+            width: 20%;
         }
         .nav li:nth-child(4) {
-            width: 25%;
+            width: 20%;
+        }
+        .nav li:nth-child(5) {
+            width: 20%;
         }
     }
     
@@ -747,7 +758,7 @@ echo $header;
     .perfil .agregarEquipo:hover{
         color: #FFFFFF;
     }
-    .cargaAjaxActividades{
+    .cargaAjaxActividades, .cargaAjaxDiario{
         font-size: 18px;
     }
         

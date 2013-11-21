@@ -1,4 +1,4 @@
-<?php if(!$this->Session->check('Profesor')){  ?>
+<?php if(!$this->Session->check('Profesor')){   ?>
 <!--<h2><?php echo $this->Html->link('Inicia sesión',$this->Html->url('/login/0/?lightbox[width]=800&amp;lightbox[height]=210',true),array('class'=>'lightbox'));?></h2>-->
 <!--<ul class="box-main-menu" id="box-main-menu">
 			<li class="main-link" id="main-primero"><a class="lightbox" href="<?php //bloginfo('url'); ?>concurso/login/0/?lightbox[width]=800&amp;amp;amp;lightbox[height]=180">Inicia sesión</a></li>

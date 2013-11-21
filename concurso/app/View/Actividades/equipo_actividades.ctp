@@ -55,7 +55,7 @@
     </div>
     <div class="right">
         <h2>Actividades Realizadas</h2>
-        <div class="countRealizadas"><span>Tu equipo lleva: </span><?php echo count($actividades); ?>/5 <span>actividades realizadas. Recuerda que la fecha límite para enviar las evidencias de las 5 actividades requeridas del Bloque 2, es el 8 de febrero de 2013.</span></div>
+        <div class="countRealizadas"><span>Tu equipo lleva: </span><?php echo count($actividades); ?>/5 <span>actividades realizadas. Recuerda que la fecha límite para enviar las evidencias de las 5 actividades requeridas del Bloque 1, es el 19 de diciembre de 2013.</span></div>
         <table class="actividadEquipo">
         <?php foreach($actividades as $ka => $a){ ?>
             <?php $act = array(

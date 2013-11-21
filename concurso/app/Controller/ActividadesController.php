@@ -36,21 +36,10 @@ class ActividadesController extends AppController {
         'Actividad33',
         );
     var $olimpiada = 'lectura';
-    public $semana = array();
+    public $semana = array(1);
     public $semanas = array(
-       '1' => 'Semana del 14 al 21 de diciembre',
-       '2' => 'Semana del 7 al 11 de enero',
-       '3' => 'Semana del 14 al 18 de enero',
-       '4' => 'Semana del 21 al 25 de enero',
-       '5' => 'Semana del 28 de enero al 1 de febrero',
-       '6' => 'Semana del 4 al 8 de febrero',
-       '7' => 'Semana del 11 al 15 de febrero',
-       '8' => 'Semana del 18 al 22 de febrero',
-       '9' => 'Semana del 25 de febrero al 1 de marzo',
-       '10' => 'Semana del 4 al 8 de marzo',
-       '11' => 'Semana del 11 al 15 de marzo',
-       '12' => 'Semana del 18 al 22 de marzo',
-       '13' => 'Semana del 8 al 12 de abril'
+       '1' => 'Semana 1',
+       
        /*'13' => 'Semana del 25 al 29 de marzo',
        '14' => 'Semana del 1 al 5 de abril'*/
     );
@@ -283,18 +272,21 @@ class ActividadesController extends AppController {
         if(!$this->Session->check('Profesor'))
                 exit();
         if(!$this->data){
-            $this->Session->setFlash('No se pudo guardar el diario de esta semana.','error');
+            $this->Session->setFlash('No se pudo guardar el diario de esta semana.','default', array(), 'bad');
+            //$this->Session->setFlash('No se pudo guardar el diario de esta semana.','error');
              $this->redirect(Router::url('/perfil',true));
              exit();
         }
         $equipo = $this->Equipo->findById($this->data['EquipoDiario']['equipo_id']);
         if(!$equipo || $this->Session->read('Profesor.Profesor.id') != $equipo['Equipo']['profesores_id']){
-             $this->Session->setFlash('No se pudo guardar el diario de esta semana.','error');
+             $this->Session->setFlash('No se pudo guardar el diario de esta semana.','default', array(), 'bad');
+             //$this->Session->setFlash('No se pudo guardar el diario de esta semana.','error');
              $this->redirect(Router::url('/perfil',true));
              exit();
         }
         if(!in_array($this->data['EquipoDiario']['semana'],$this->semana)){
-            $this->Session->setFlash('Solo puede guardar el diario de la semana actual.','error');
+            $this->Session->setFlash('No se pudo guardar el diario de esta semana.','default', array(), 'bad');
+            //$this->Session->setFlash('Solo puede guardar el diario de la semana actual.','error');
             $this->redirect(Router::url('/perfil',true));
             exit();
         }
@@ -317,9 +309,9 @@ class ActividadesController extends AppController {
             }
         }
         if($this->EquipoDiario->save($diario))
-             $this->Session->setFlash('El diario de esta semana se guardó correctamente.','success');
+             $this->Session->setFlash('El diario de esta semana se guardó correctamente.','default', array(), 'good');
         else
-             $this->Session->setFlash('No se pudo guardar el diario de esta semana.','error');
+             $this->Session->setFlash('No se pudo guardar el diario de esta semana.','default', array(), 'bad');
         $this->redirect(Router::url('/perfil',true));
     }
     function add(){

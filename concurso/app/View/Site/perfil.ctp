@@ -111,10 +111,20 @@
         <h2>Diario colectivo </h2>
         <?php if ($equipos) { ?>
             <ul class="equipos equiposDiario">
-                <?php foreach ($equipos as $e) { ?>
-                    <li>
-                        <div class="nombre_equipo"><?php echo $e['Equipo']['nombre']; ?></div>
-                        <div class="editar_quipo"><?php echo $this->Html->link('Ver', $this->Html->url('/EquipoDiario/' . $e['Equipo']['id'], true), array('id' => 'verEquipo_' . $e['Equipo']['id'], 'class' => 'EquipoDiario btn-mas fltR bgC')); ?></div>
+                <?php foreach ($equipos as $k => $e) { ?>
+                    <li class="equipo_li <?php echo ($k%2 == 0) ? 'left' : 'right'?>">
+                        <div class="equipo_head"></div>
+                        <div class="equipo_content">
+                            <div>
+                                <div class="nombre_equipo"><?php echo $e['Equipo']['nombre']; ?>
+                                    <div class="ver">
+                                        <div>
+                                            <?php echo $this->Html->link('Ver', $this->Html->url('/EquipoDiario/' . $e['Equipo']['id'], true), array('id' => 'verEquipo_' . $e['Equipo']['id'], 'class' => 'EquipoDiario btn-mas fltR bgC')); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 <?php } ?>
             </ul>
@@ -173,11 +183,11 @@
         <?php } ?>
 
     </div>
-    <div class="right tab maswW arribap" id="descargas">
-        <ul class="descargas_ul">
-            <a href=""><li>Guía</li></a>
-            <a href=""><li>Lista</li></a>
-            <a href=""><li>Calendario</li></a>
+    <div class="right tab maswW arribap" id="descargas"> 
+        <ul class="descargas_ul"> 
+            <a href="<?php echo $this->Html->url('/descargas/Guia_Circular_con_palabras_2013-2014.doc'); ?>"><li>Guía</li></a>
+            <a href="<?php echo $this->Html->url('/descargas/libros_sugeridos_Olimpiada_2013-2014.xlsx'); ?>"><li>Lista</li></a>
+            <a href="<?php echo $this->Html->url('/descargas/Calendario_de_trabajo.docx'); ?>"><li>Calendario</li></a>
             <a href=""><li>Actividades 1</li></a>
             <a href=""><li>Actividades 2</li></a>
             <a href=""><li>Actividades 3</li></a>
